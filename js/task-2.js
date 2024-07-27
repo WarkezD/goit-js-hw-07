@@ -28,19 +28,11 @@ const images = [
 
 const gallery = document.querySelector('.gallery');
 
-function createGalleryItem(image) {
-  const galleryItem = document.createElement('li');
-  const galleryItemTemplate = `<img src="${image.url}" alt="${image.alt}" class="gallery__image">`;
-  galleryItem.insertAdjacentHTML('beforeend', galleryItemTemplate);
-  return galleryItem;
-}
-
-const galleryFragment = document.createDocumentFragment();
-
-images.forEach(image => {
-  const galleryItem = createGalleryItem(image);
-  galleryFragment.appendChild(galleryItem);
-});
-
-gallery.appendChild(galleryFragment);
-
+images.forEach((image)=>{
+  const li = document.createElement('li');
+  const img = document.createElement('img');
+  img.src = image.url;
+  img.alt = image.alt;
+  li.appendChild(img);
+  gallery.appendChild(li);
+})
